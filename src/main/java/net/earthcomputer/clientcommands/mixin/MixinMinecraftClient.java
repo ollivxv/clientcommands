@@ -79,6 +79,7 @@ public abstract class MixinMinecraftClient {
     // Earth annoying his friends <3 nothing to see here
     @Inject(method = "getWindowTitle", at = @At("RETURN"), cancellable = true)
     private void modifyWindowTitle(CallbackInfoReturnable<String> ci) {
+<<<<<<< HEAD
         String playerUUID = MinecraftClient.getInstance().getSession().getProfile().getId().toString();
         if ("fa68270b-1071-46c6-ac5c-6c4a0b777a96".equals(playerUUID)
                 || "d4557649-e553-413e-a019-56d14548df96".equals(playerUUID)
@@ -87,6 +88,15 @@ public abstract class MixinMinecraftClient {
                 || "e4093360-a200-4f99-aa13-be420b8d9a79".equals(playerUUID)
                 || "083fb87e-c9e4-4489-8fb7-a45b06bfca90".equals(playerUUID)
                 || "b793c3b9-425f-4dd8-a056-9dec4d835e24".equals(playerUUID)) {
+=======
+        String playerName = MinecraftClient.getInstance().getSession().getProfile().getName();
+        if ("Earthcomputer".equals(playerName)
+                || "Azteched".equals(playerName)
+                || "samnrad".equals(playerName)
+                || "allocator".equals(playerName)
+                || "Rybot666".equals(playerName)
+                || "Kerbaras".equals(playerName)) {
+>>>>>>> 57350beb9f73e93ae737ebf65b779bc789396dae
             List<Character> chars = ci.getReturnValue().chars().mapToObj(c -> (char) c).collect(Collectors.toCollection(ArrayList::new));
             Collections.shuffle(chars);
             ci.setReturnValue(chars.stream().map(String::valueOf).collect(Collectors.joining()));
